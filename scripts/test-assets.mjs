@@ -6,6 +6,8 @@ let report=[];
 for(let slug of ['china','abrams','challenger','france','leopard','japan']){
  let g=glb('public/models/rigged/'+slug+'.glb');assert.equal(g.scenes.length,1,slug+' accidentally exported extra scenes');
  assert(g.nodes.some(n=>n.name?.startsWith('body')));assert(g.nodes.some(n=>n.name?.startsWith('turret')));assert(g.nodes.some(n=>n.name?.startsWith('cannon')));assert(g.nodes.some(n=>n.name?.startsWith('tracks')));
+ for(const mesh of g.meshes)for(const primitive of mesh.primitives)assert(primitive.attributes.COLOR_0!==undefined,slug+' missing original pigment');
+ if(slug==='leopard')assert(g.materials.filter(m=>m.pbrMetallicRoughness?.baseColorTexture).length>=2,'original Leopard hull/turret camouflage was flattened');
  let triangles=g.meshes.flatMap(m=>m.primitives).reduce((n,p)=>n+g.accessors[p.indices].count/3,0);assert(triangles>15000,slug+' lost source detail');assert(triangles<150000,slug+' excessive duplicate geometry');
  report.push({tank:slug,triangles});
 }

@@ -1,0 +1,44 @@
+[
+  {
+    "model": "china",
+    "source": "/Users/lee/GPT6test/wasteland_tanks/assets/blender/china.blend",
+    "shape": "unscaled original geometry",
+    "finish": "source base-color graph; original camouflage pigment textures and vertex colors",
+    "lighting_baked": false
+  },
+  {
+    "model": "france",
+    "source": "/Users/lee/GPT6test/wasteland_tanks/assets/blender/france.blend",
+    "shape": "unscaled original geometry",
+    "finish": "source base-color graph; original camouflage pigment textures and vertex colors",
+    "lighting_baked": false
+  },
+  {
+    "model": "japan",
+    "source": "/Users/lee/GPT6test/wasteland_tanks/assets/blender/japan.blend",
+    "shape": "unscaled original geometry",
+    "finish": "source base-color graph; original camouflage pigment textures and vertex colors",
+    "lighting_baked": false
+  },
+  {
+    "model": "challenger",
+    "source": "/Users/lee/GPT6test/tank_series/01_challenger2.blend",
+    "shape": "unscaled original geometry",
+    "finish": "source base-color graph; original camouflage pigment textures and vertex colors",
+    "lighting_baked": false
+  },
+  {
+    "model": "leopard",
+    "source": "/Users/lee/GPT6test/tank_series/02_leopard2a7.blend",
+    "shape": "unscaled original geometry",
+    "finish": "source base-color graph; original camouflage pigment textures and vertex colors",
+    "lighting_baked": false
+  },
+  {
+    "model": "abrams",
+    "source": "/Users/lee/GPT6test/tank_series/04_abramsx.blend",
+    "shape": "unscaled original geometry",
+    "finish": "source base-color graph; original camouflage pigment textures and vertex colors",
+    "lighting_baked": false
+  }
+]

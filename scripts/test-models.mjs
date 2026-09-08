@@ -1,3 +1,4 @@
+import './node-image-bitmap.mjs';
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import ts from 'typescript';
