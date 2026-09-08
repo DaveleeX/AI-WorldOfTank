@@ -1,0 +1,6 @@
+PASS 99A turret rotates independently 11 body meshes
+PASS AbramsX turret rotates independently 13 body meshes
+PASS 挑战者 2 turret rotates independently 16 body meshes
+PASS 勒克莱尔 turret rotates independently 11 body meshes
+PASS 豹 2A7 turret rotates independently 13 body meshes
+PASS 10 式 turret rotates independently 11 body meshes

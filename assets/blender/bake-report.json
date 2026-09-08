@@ -1,0 +1,12 @@
+[
+  {
+    "map": "desert",
+    "source_objects": 425,
+    "faces": 7470,
+    "bake": "Cycles DIFFUSE / INDIRECT only",
+    "resolution": 2048,
+    "samples": 16,
+    "dynamic_objects": 0,
+    "seconds": 14
+  }
+]

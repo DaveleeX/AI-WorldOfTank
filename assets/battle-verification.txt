@@ -1,0 +1,27 @@
+PASS Six nations and four maps
+PASS Equipment changes actual combat stats
+PASS Each match starts 5v5
+PASS Movement, energy consumption, recovery and independent turret
+PASS Cover collision and high-speed projectile intersection
+PASS Shots respect cover, reload, and cause damage
+PASS Victory, defeat, and dead-player spectator lifecycle
+   灼热荒原 defeat 84s
+   破碎之城 defeat 65s
+   泥泞边境 defeat 79s
+   极寒战线 victory 81s
+PASS AI matches finish on all four maps
+PASS Victory credits buy upgrades once and survive save roundtrip
+{
+  "passed": 9,
+  "tests": [
+    "Six nations and four maps",
+    "Equipment changes actual combat stats",
+    "Each match starts 5v5",
+    "Movement, energy consumption, recovery and independent turret",
+    "Cover collision and high-speed projectile intersection",
+    "Shots respect cover, reload, and cause damage",
+    "Victory, defeat, and dead-player spectator lifecycle",
+    "AI matches finish on all four maps",
+    "Victory credits buy upgrades once and survive save roundtrip"
+  ]
+}

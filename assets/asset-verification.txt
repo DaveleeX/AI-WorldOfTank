@@ -1,0 +1,8 @@
+PASS six single-scene high-detail GLBs; four UV-mapped static worlds and 2048px indirect bakes [
+  { tank: 'china', triangles: 52481 },
+  { tank: 'abrams', triangles: 59764 },
+  { tank: 'challenger', triangles: 58300 },
+  { tank: 'france', triangles: 52178 },
+  { tank: 'leopard', triangles: 54310 },
+  { tank: 'japan', triangles: 50914 }
+]

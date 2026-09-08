@@ -1,0 +1,26 @@
+[
+  {
+    "tank": "china",
+    "source_objects": 1199,
+    "dynamic": true,
+    "light_baked": false,
+    "game_faces": 25624,
+    "game_triangles": 52481
+  },
+  {
+    "tank": "france",
+    "source_objects": 1179,
+    "dynamic": true,
+    "light_baked": false,
+    "game_faces": 25566,
+    "game_triangles": 52178
+  },
+  {
+    "tank": "japan",
+    "source_objects": 1156,
+    "dynamic": true,
+    "light_baked": false,
+    "game_faces": 24836,
+    "game_triangles": 50914
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "map": "desert",
+    "faces": 11836,
+    "bake": "Cycles diffuse indirect only + separate albedo",
+    "resolution": 2048,
+    "samples": 16,
+    "dynamic_objects": 0,
+    "continuous_ridge": true
+  },
+  {
+    "map": "city",
+    "faces": 33812,
+    "bake": "Cycles diffuse indirect only + separate albedo",
+    "resolution": 2048,
+    "samples": 16,
+    "dynamic_objects": 0,
+    "continuous_ridge": true
+  },
+  {
+    "map": "mud",
+    "faces": 13580,
+    "bake": "Cycles diffuse indirect only + separate albedo",
+    "resolution": 2048,
+    "samples": 16,
+    "dynamic_objects": 0,
+    "continuous_ridge": true
+  },
+  {
+    "map": "snow",
+    "faces": 11398,
+    "bake": "Cycles diffuse indirect only + separate albedo",
+    "resolution": 2048,
+    "samples": 16,
+    "dynamic_objects": 0,
+    "continuous_ridge": true
+  }
+]
