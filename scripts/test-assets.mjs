@@ -4,8 +4,8 @@ const root=new URL('../',import.meta.url);
 function glb(path){let b=fs.readFileSync(new URL(path,root));assert.equal(b.readUInt32LE(0),0x46546c67);return JSON.parse(b.subarray(20,20+b.readUInt32LE(12)).toString().trim());}
 let report=[];
 for(let slug of ['china','abrams','challenger','france','leopard','japan']){
- let g=glb('public/models/'+slug+'.glb');assert.equal(g.scenes.length,1,slug+' accidentally exported extra scenes');
- assert(g.nodes.some(n=>n.name?.startsWith('body')));assert(g.nodes.some(n=>n.name?.startsWith('turret')));
+ let g=glb('public/models/rigged/'+slug+'.glb');assert.equal(g.scenes.length,1,slug+' accidentally exported extra scenes');
+ assert(g.nodes.some(n=>n.name?.startsWith('body')));assert(g.nodes.some(n=>n.name?.startsWith('turret')));assert(g.nodes.some(n=>n.name?.startsWith('cannon')));assert(g.nodes.some(n=>n.name?.startsWith('tracks')));
  let triangles=g.meshes.flatMap(m=>m.primitives).reduce((n,p)=>n+g.accessors[p.indices].count/3,0);assert(triangles>15000,slug+' lost source detail');assert(triangles<150000,slug+' excessive duplicate geometry');
  report.push({tank:slug,triangles});
 }

@@ -1,0 +1,49 @@
+[
+  {
+    "tank": "china",
+    "meshes": 1166,
+    "file": "/Users/lee/GPT6test/wasteland_tanks/assets/blender/china.blend"
+  },
+  {
+    "tank": "france",
+    "meshes": 1146,
+    "file": "/Users/lee/GPT6test/wasteland_tanks/assets/blender/france.blend"
+  },
+  {
+    "tank": "japan",
+    "meshes": 1119,
+    "file": "/Users/lee/GPT6test/wasteland_tanks/assets/blender/japan.blend"
+  },
+  {
+    "map": "desert",
+    "engine": "CYCLES",
+    "indirect": true,
+    "direct": false,
+    "color": false,
+    "dynamic_meshes": []
+  },
+  {
+    "map": "city",
+    "engine": "CYCLES",
+    "indirect": true,
+    "direct": false,
+    "color": false,
+    "dynamic_meshes": []
+  },
+  {
+    "map": "mud",
+    "engine": "CYCLES",
+    "indirect": true,
+    "direct": false,
+    "color": false,
+    "dynamic_meshes": []
+  },
+  {
+    "map": "snow",
+    "engine": "CYCLES",
+    "indirect": true,
+    "direct": false,
+    "color": false,
+    "dynamic_meshes": []
+  }
+]

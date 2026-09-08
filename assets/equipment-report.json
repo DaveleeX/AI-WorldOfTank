@@ -1,0 +1,102 @@
+{
+  "rigs": [
+    {
+      "tank": "china",
+      "parts": {
+        "body": 111,
+        "turret": 103,
+        "cannon": 15,
+        "tracks": 970
+      },
+      "hinge": [
+        0,
+        2.25,
+        1.45
+      ]
+    },
+    {
+      "tank": "france",
+      "parts": {
+        "body": 111,
+        "turret": 83,
+        "cannon": 15,
+        "tracks": 970
+      },
+      "hinge": [
+        0,
+        2.25,
+        1.47
+      ]
+    },
+    {
+      "tank": "japan",
+      "parts": {
+        "body": 111,
+        "turret": 88,
+        "cannon": 11,
+        "tracks": 946
+      },
+      "hinge": [
+        0,
+        2.2,
+        1.4
+      ]
+    },
+    {
+      "tank": "challenger",
+      "parts": {
+        "body": 173,
+        "turret": 97,
+        "cannon": 23,
+        "tracks": 970
+      },
+      "hinge": [
+        0,
+        2.37,
+        1.43
+      ]
+    },
+    {
+      "tank": "leopard",
+      "parts": {
+        "body": 119,
+        "turret": 89,
+        "cannon": 11,
+        "tracks": 994
+      },
+      "hinge": [
+        0,
+        2.31,
+        1.22
+      ]
+    },
+    {
+      "tank": "abrams",
+      "parts": {
+        "body": 168,
+        "turret": 103,
+        "cannon": 11,
+        "tracks": 994
+      },
+      "hinge": [
+        0,
+        2.4,
+        1.66
+      ]
+    }
+  ],
+  "equipment_faces": {
+    "barrel_1": 1010,
+    "tracks_1": 21672,
+    "armor_1": 1368,
+    "barrel_2": 2900,
+    "tracks_2": 22020,
+    "armor_2": 4504,
+    "ammo_0": 626,
+    "ammo_1": 1802,
+    "ammo_2": 626,
+    "aircraft": 1178
+  },
+  "dynamic": true,
+  "light_baked": false
+}

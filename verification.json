@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-08",
+  "date": "2026-09-09",
   "battle_tests": 9,
   "battle_tests_passed": true,
   "six_actual_glb_turrets_verified": true,
@@ -10,5 +10,19 @@
   "production_build": "passed",
   "blender_asset_render_review": "completed",
   "browser_interaction_test": "not_run",
-  "notes": "Single player with four AI allies against five AI enemies; device-local save."
+  "notes": "Single player with four AI allies against five AI enemies; device-local save.",
+  "blender_source_audit": "passed via Blender MCP on port 9881",
+  "resource_disposal_regression": "passed",
+  "hosting": "owner-only publication in progress",
+  "local_http": "200",
+  "cinematic_combat_regressions": 11,
+  "rigged_tanks": 6,
+  "equipment_and_aircraft_models": 10,
+  "three_dimensional_gravity": 9.81,
+  "pitch_degrees": [
+    -10,
+    25
+  ],
+  "per_map_music": "4 original procedural scores; scheduler lifecycle tested with mock audio context",
+  "equipment_glb_blender_render": "reviewed"
 }
