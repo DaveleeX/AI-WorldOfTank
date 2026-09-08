@@ -13,7 +13,7 @@
   "notes": "Single player with four AI allies against five AI enemies; device-local save.",
   "blender_source_audit": "passed via Blender MCP on port 9881",
   "resource_disposal_regression": "passed",
-  "hosting": "owner-only publication in progress",
+  "hosting": "blocked: local domain policy returned HTTP 403 for git.chatgpt-team.site; online version was not updated",
   "local_http": "200",
   "cinematic_combat_regressions": 11,
   "rigged_tanks": 6,
@@ -24,5 +24,6 @@
     25
   ],
   "per_map_music": "4 original procedural scores; scheduler lifecycle tested with mock audio context",
-  "equipment_glb_blender_render": "reviewed"
+  "equipment_glb_blender_render": "reviewed",
+  "local_new_assets_http": "17 HEAD requests passed (page plus 16 GLBs)"
 }
