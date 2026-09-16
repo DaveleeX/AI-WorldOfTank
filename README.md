@@ -1,4 +1,4 @@
-# IRON FRONT · 废土战线
+# AI-WorldOfTank · IRON FRONT 废土战线
 
 可游玩的第三人称 3D 坦克歼灭战。运行 `npm run dev` 后访问 http://localhost:3000 。建议使用支持 WebGL2 的桌面浏览器。
 
