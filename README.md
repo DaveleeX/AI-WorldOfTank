@@ -12,19 +12,19 @@ React + Three.js 驱动实时战斗，Blender MCP 制作模型和场景。坦克
 
 选择中国 99A、美国 AbramsX、英国挑战者 2、法国勒克莱尔、德国豹 2A7、日本 10 式，并选择出击地图。
 
-![六国坦克作战车库](docs/screenshots/garage.png)
+![六国坦克作战车库](docs/screenshots/garage.jpg)
 
 ### 装备军械库
 
 切换炮管、履带、弹药与装甲时，镜头推近对应部位；采购前可免费预览模型变化。
 
-![军械库中的反应装甲特写预览](docs/screenshots/arsenal.png)
+![军械库中的反应装甲特写预览](docs/screenshots/arsenal.jpg)
 
 ### 城市实战
 
 第三人称跟随视角、独立炮塔瞄准、血量与能量、装填提示、队伍人数和小地图。
 
-![破碎之城地图中的 5v5 实时战斗](docs/screenshots/battle-city.png)
+![破碎之城地图中的 5v5 实时战斗](docs/screenshots/battle-city.jpg)
 
 ## 游戏特色
 
