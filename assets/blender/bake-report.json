@@ -8,5 +8,35 @@
     "samples": 16,
     "dynamic_objects": 0,
     "seconds": 14
+  },
+  {
+    "map": "city",
+    "source_objects": 4810,
+    "faces": 29380,
+    "bake": "Cycles DIFFUSE / INDIRECT only",
+    "resolution": 2048,
+    "samples": 16,
+    "dynamic_objects": 0,
+    "seconds": 1175
+  },
+  {
+    "map": "mud",
+    "source_objects": 1924,
+    "faces": 15288,
+    "bake": "Cycles DIFFUSE / INDIRECT only",
+    "resolution": 2048,
+    "samples": 16,
+    "dynamic_objects": 0,
+    "seconds": 227
+  },
+  {
+    "map": "snow",
+    "source_objects": 414,
+    "faces": 7032,
+    "bake": "Cycles DIFFUSE / INDIRECT only",
+    "resolution": 2048,
+    "samples": 16,
+    "dynamic_objects": 0,
+    "seconds": 20
   }
 ]
