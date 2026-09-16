@@ -4,6 +4,12 @@
 
 React + Three.js 驱动实时战斗，Blender MCP 制作模型和场景。坦克延续本工程原有的 Q 版比例、柔和倒角与哑光涂装。
 
+## Vercel 地址
+
+[打开坦克大战（Vercel）](https://ai3dworldoftank-daveleexs-projects.vercel.app/)
+
+Vercel 项目：`ai3dworldoftank`，关联本仓库 `main` 分支。2026-09-16 核查时，最近一次生产部署为 **CANCELED（已取消）**，尚未确认线上可玩；成功部署后可通过以上地址进入游戏。
+
 ## 游戏截图
 
 以下为本项目 **生产静态构建的实际浏览器截图**，不是概念图。截图使用默认装备，未修改积分或战斗数据。
