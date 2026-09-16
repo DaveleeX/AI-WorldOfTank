@@ -1,0 +1,11 @@
+import {spawnSync} from 'node:child_process';
+import {existsSync,readFileSync} from 'node:fs';
+const result=spawnSync(process.execPath,['node_modules/vinext/dist/cli.js','build'],{stdio:'inherit',env:{...process.env,VERCEL:'1'}});
+if(result.error)throw result.error;
+if(result.status!==0)process.exit(result.status??1);
+const root='dist/client';
+const expected=['index.html',...['china','abrams','challenger','france','leopard','japan'].map(n=>'models/rigged/'+n+'.glb'),...['desert','city','mud','snow'].flatMap(n=>['battlefields/'+n+'.glb','battlefields/'+n+'-indirect.png','battlefields/'+n+'-albedo.png']),...['barrel_1','barrel_2','tracks_1','tracks_2','armor_1','armor_2','ammo_0','ammo_1','ammo_2','aircraft'].map(n=>'equipment/'+n+'.glb')];
+for(const path of expected)if(!existsSync(root+'/'+path))throw Error('Missing deployment asset: '+path);
+const html=readFileSync(root+'/index.html','utf8');
+if(!html.includes('IRON FRONT')||!html.includes('<script'))throw Error('Static export is missing the game entrypoint');
+console.log('Vercel static export verified: HTML, six tanks, four maps, baked textures and all equipment.');
