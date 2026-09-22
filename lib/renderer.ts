@@ -2,7 +2,8 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { TANKS, MAPS } from './battle.mjs';
+import {BuildingDestruction,partitionBuildings} from './destruction.mjs';
+import { TANKS, MAPS, makeObstacles } from './battle.mjs';
 import { gunSpec, muzzle } from './ballistics.mjs';
 const UP=new THREE.Vector3(0,1,0);
 export class TankRenderer {
@@ -41,14 +42,14 @@ export class TankRenderer {
   return this.mapAssets[id];
  }
  async buildMap(index,garage=false){
-  let token=++this.mapToken;this.disposeObject(this.world);this.world.clear();this.preview=null;this.entities.clear();this.effects=[];this.shotMeshes=[];this.mapIndex=index;
+  this.destruction=null;this.pendingBuildingEvents=[];let token=++this.mapToken;this.disposeObject(this.world);this.world.clear();this.preview=null;this.entities.clear();this.effects=[];this.shotMeshes=[];this.mapIndex=index;
   let d=MAPS[index];this.scene.background=new THREE.Color(d.sky);this.scene.fog=new THREE.FogExp2(d.fog,garage?.007:.0037);
   // The ground is temporary while the real Blender static scene loads.
   let placeholder=this.mesh(new THREE.PlaneGeometry(900,900),this.mat(d.color),this.world);placeholder.rotation.x=-Math.PI/2;
   this.sun.color.set(d.id==='snow'?0xdcecff:0xffd5a0);this.sun.intensity=d.id==='mud'?2.5:3.4;
   if(garage){let pad=this.mat(0x595b50,.4,.8);this.mesh(new THREE.CylinderGeometry(8.2,8.6,.16,64),pad,this.world,0,.06,0);let ring=new THREE.Mesh(new THREE.RingGeometry(7.8,7.85,80),new THREE.MeshBasicMaterial({color:0xbca26c,side:THREE.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.y=.15;this.world.add(ring);}
   else{let border=new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(-178,.15,-178),new THREE.Vector3(178,.15,-178),new THREE.Vector3(178,.15,178),new THREE.Vector3(-178,.15,178)]),new THREE.LineBasicMaterial({color:0xe4ac55,transparent:true,opacity:.6}));this.world.add(border);}
-  try{let asset=await this.loadMap(index);if(!this.active||token!==this.mapToken)return;let environment=asset.scene.clone(true);environment.traverse(o=>{if(o.isMesh){o.geometry=o.geometry.clone();o.material=o.material.clone();o.material.map=asset.albedo.clone();o.material.map.needsUpdate=true;o.material.color.set(0xffffff);o.material.lightMap=asset.light.clone();o.material.lightMap.needsUpdate=true;o.material.lightMapIntensity=1.25;o.material.roughness=d.id==='mud'?.52:.9;o.material.onBeforeCompile=shader=>{shader.fragmentShader=shader.fragmentShader.replace('#include <lights_fragment_begin>',THREE.ShaderChunk.lights_fragment_begin.replace('#if ( NUM_HEMI_LIGHTS > 0 )','#if 0'));};o.material.customProgramCacheKey=()=> 'static-indirect-no-live-sky-v1';o.receiveShadow=true;o.castShadow=true;o.userData.staticIndirect=true;}});this.world.remove(placeholder);this.disposeObject(placeholder);this.world.add(environment);}
+  try{let asset=await this.loadMap(index);if(!this.active||token!==this.mapToken)return;let environment=asset.scene.clone(true);environment.traverse(o=>{if(o.isMesh){o.geometry=o.geometry.clone();o.material=o.material.clone();o.material.map=asset.albedo.clone();o.material.map.needsUpdate=true;o.material.color.set(0xffffff);o.material.lightMap=asset.light.clone();o.material.lightMap.needsUpdate=true;o.material.lightMapIntensity=1.25;o.material.roughness=d.id==='mud'?.52:.9;o.material.onBeforeCompile=shader=>{shader.fragmentShader=shader.fragmentShader.replace('#include <lights_fragment_begin>',THREE.ShaderChunk.lights_fragment_begin.replace('#if ( NUM_HEMI_LIGHTS > 0 )','#if 0'));};o.material.customProgramCacheKey=()=> 'static-indirect-no-live-sky-v1';o.receiveShadow=true;o.castShadow=true;o.userData.staticIndirect=true;}});this.world.remove(placeholder);this.disposeObject(placeholder);this.world.add(environment);if(!garage){this.destruction=new BuildingDestruction(partitionBuildings(environment,makeObstacles(d.id)),this.world);for(const e of this.pendingBuildingEvents)this.destruction.hit(e);this.pendingBuildingEvents=[];}}
   catch(e){if(token===this.mapToken)this.onError('战场资源加载失败，请刷新重试。');}
  }
 
@@ -69,9 +70,10 @@ export class TankRenderer {
  const follow=a.clone().add(new THREE.Vector3(8,5,-13));const end=f.origin.clone().add(this.mode==='battle'?new THREE.Vector3(0,5.4,-14):new THREE.Vector3(10,5.3,12.7));const blend=THREE.MathUtils.smoothstep(t,.35,1);this.camera.position.copy(follow.lerp(end,blend));const target=a.clone().lerp(f.origin.clone().add(new THREE.Vector3(0,1.6,this.mode==='battle'?25:0)),blend);this.camera.lookAt(target);this.lookTarget.copy(target);this.camera.fov=48;this.camera.updateProjectionMatrix();if(t>=1)this.finishFlyover();
  }
  start(battle){this.finishFlyover();this.mode='battle';this.battle=battle;this.preview=null;this.buildMap(MAPS.indexOf(battle.map));for(let t of battle.tanks){let model=this.tank(t.def,t.id===0?this.gear||{}:{});this.world.add(model);let marker=new THREE.Mesh(new THREE.RingGeometry(2.7,2.82,24),new THREE.MeshBasicMaterial({color:t.team?0xe6684c:0x91bda0,side:THREE.DoubleSide,transparent:true,opacity:.65}));marker.rotation.x=-Math.PI/2;marker.position.y=.1;model.add(marker);this.entities.set(t.id,model);}this.cameraReady=false;}
+ buildingHit(e){if(this.destruction)this.destruction.hit(e);else this.pendingBuildingEvents?.push(e);}
  burst(e){let kill=e.type==='kill',count=kill?25:e.type==='fire'?6:9;let mat=new THREE.MeshBasicMaterial({color:kill?0xffa23e:e.type==='fire'?0xffe6a0:0xf3b563,transparent:true});for(let i=0;i<count;i++){let m=this.mesh(new THREE.IcosahedronGeometry(kill?.4:.15,0),mat.clone(),this.world,e.x,e.y??2,e.z);this.effects.push({mesh:m,v:new THREE.Vector3((Math.random()-.5)*(kill?12:5),Math.random()*8,(Math.random()-.5)*(kill?12:5)),life:kill?1.4:.5,max:kill?1.4:.5});}mat.dispose();}
  render(dt,aim=0,pitch=0,zoom=false){
- this.tick+=dt;
+ this.tick+=dt;this.destruction?.update(dt);
  if(this.mode==='garage'){
  if(this.preview){this.preview.rotation.y=-.45+(this.focus?0:Math.sin(this.tick*.18)*.09);this.preview.userData.cannon.rotation.x=this.focus==='barrel'?-.045:0;}
  let pos=new THREE.Vector3(10,5.3,12.7),target=new THREE.Vector3(-.3,1.25,0),fov=47;

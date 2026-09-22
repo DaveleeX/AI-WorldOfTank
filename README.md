@@ -32,6 +32,12 @@ Vercel 项目：`ai3dworldoftank`，关联本仓库 `main` 分支。2026-09-16 �
 
 ![破碎之城地图中的 5v5 实时战斗](docs/screenshots/battle-city.jpg)
 
+## 可破坏建筑
+
+城市废楼和乡村房屋可被炮弹直接击毁：低矮房屋承受 2 次命中，高层建筑承受 3 次命中。命中后墙面逐步开裂，最后碎块坠落、扬尘并留下废墟；倒塌后原建筑碰撞同步移除，坦克和炮弹可以通过。每局重新恢复建筑。
+
+破碎沿用现有 Blender 场景几何和贴图；建筑及碎块使用实时光照，地形等静态部分保留间接光照烘焙。
+
 ## 游戏特色
 
 - **六国战车**：99A 均衡突击、AbramsX 火力压制、挑战者 2 重装防护、勒克莱尔快速装填、豹 2A7 精准射击、10 式机动侧袭。
@@ -122,6 +128,7 @@ python3 -m http.server 3000 --directory dist/client
 ## 验证与边界
 
 ```bash
+node scripts/test-destruction.mjs
 node scripts/test-battle.mjs
 node scripts/test-models.mjs
 node scripts/test-assets.mjs
