@@ -28,3 +28,7 @@
 @keyframes kill-ring{from{transform:scale(.5);opacity:.8}to{transform:scale(2.5);opacity:0}}
 @media(max-width:800px){.is-quiet .topbar{left:14px;right:14px}.is-quiet .brand small{display:none}.quiet-dock{bottom:90px;gap:18px;width:max-content;max-width:95vw}.is-arsenal .arsenal{right:12px;width:250px;max-height:calc(100dvh - 160px)}.focus-caption{left:20px;bottom:70px}.focus-caption strong{font-size:20px}.flight-caption strong{font-size:18px}.skip-flight{bottom:10vh}.kill-banner{top:19%}.kill-banner>strong{font-size:24px}.score-theme{display:none}}
 @media(prefers-reduced-motion:reduce){.kill-banner,.kill-rings,.letterbox,.vehicle-info,.mission-panel,.tank-selection{animation:none}.kill-rings{display:none}}
+
+.heavy-skill{position:absolute;right:32px;bottom:310px;width:235px;padding:14px 16px;border-left:2px solid #70eaff;background:linear-gradient(90deg,#12333ee8,#12292d88);color:#c6faff;pointer-events:none}.heavy-skill b,.heavy-skill span,.heavy-skill small{display:block}.heavy-skill b{font-size:14px;letter-spacing:2px}.heavy-skill span{font-size:12px;margin:9px 0}.heavy-skill small{font-size:10px;opacity:.7;margin-top:8px}.heavy-skill>div{height:3px;background:#ffffff20}.heavy-skill i{display:block;height:100%;background:#72ecff;box-shadow:0 0 12px #48ddff}.heavy-skill.charged{border-color:#fff0b4;box-shadow:0 0 25px #4be1ff55;color:#fff2bd}
+
+@media(max-width:900px){.heavy-skill{right:15px;bottom:220px;width:185px;padding:10px;font-size:11px}}

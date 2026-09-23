@@ -32,6 +32,10 @@ Vercel 项目：`ai3dworldoftank`，关联本仓库 `main` 分支。2026-09-16 �
 
 ![破碎之城地图中的 5v5 实时战斗](docs/screenshots/battle-city.jpg)
 
+## 二技能 · 震荡重炮
+
+本局亲手击毁第二辆敌车后解锁。轻点左键发射普通炮弹，按住左键蓄力 1.2 秒后松开，发射 2.5 倍伤害的震荡重炮；直接命中的存活敌车眩晕 1 秒，暂停移动、瞄准和开火。重炮装填时间为普通炮的 1.5 倍，解锁持续到本局结束。炮口聚能、蓝金爆闪、冲击环与敌军眩晕光环用于区分技能状态。暂停或失去窗口焦点取消蓄力。
+
 ## 可破坏建筑
 
 城市废楼和乡村房屋可被炮弹直接击毁：低矮房屋承受 2 次命中，高层建筑承受 3 次命中。命中后墙面逐步开裂，最后碎块坠落、扬尘并留下废墟；倒塌后原建筑碰撞同步移除，坦克和炮弹可以通过。每局重新恢复建筑。
@@ -128,6 +132,7 @@ python3 -m http.server 3000 --directory dist/client
 ## 验证与边界
 
 ```bash
+node scripts/test-heavy-shot.mjs
 node scripts/test-destruction.mjs
 node scripts/test-battle.mjs
 node scripts/test-models.mjs

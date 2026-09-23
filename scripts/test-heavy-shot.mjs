@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {Battle} from '../lib/battle.mjs';
+function arena(){const b=new Battle();b.obstacles=[];for(const t of b.tanks){t.x=150;t.z=t.id*8;t.reload=100;t.s.speed=0;}b.player.x=0;b.player.z=0;b.player.reload=0;return b;}
+const b=arena();b.hit(b.tanks[8],9999,0);assert(!b.heavyUnlocked);b.hit(b.tanks[9],9999,0);assert(b.heavyUnlocked);assert.equal(b.events.filter(e=>e.type==='skillUnlock').length,1);b.hit(b.tanks[9],9999,0);assert.equal(b.kills,2);
+for(let i=0;i<25;i++)b.update(.05,{fire:true});assert.equal(b.shots.length,0);assert.equal(b.charge,1.2);b.update(.01,{fire:false});assert.equal(b.shots.length,1);assert(b.shots[0].heavy);assert.equal(b.shots[0].damage,b.player.s.damage*2.5);assert.equal(b.charge,0);assert.equal(b.player.reload,b.player.s.reload*1.5);
+const target=b.tanks[5];target.x=0;target.z=35;target.reload=0;target.s.speed=12;for(let i=0;i<10&&!target.stun;i++)b.update(.025);assert.equal(target.stun,1);const position={x:target.x,z:target.z,aim:target.aim};const fires=b.events.filter(e=>e.type==='fire'&&e.owner===5).length;for(let i=0;i<19;i++)b.update(.05);assert(target.stun>0);assert.equal(target.x,position.x);assert.equal(target.z,position.z);assert.equal(target.aim,position.aim);assert.equal(b.events.filter(e=>e.type==='fire'&&e.owner===5).length,fires);b.update(.05);assert.equal(target.stun,0);b.update(.05);assert(target.x!==position.x||target.z!==position.z);
+const tap=arena();tap.heavyUnlocked=true;tap.update(.01,{fireReleased:true});assert.equal(tap.shots.length,1);assert(!tap.shots[0].heavy);
+const cancelled=arena();cancelled.heavyUnlocked=true;for(let i=0;i<25;i++)cancelled.update(.05,{fire:true});cancelled.cancelCharge();cancelled.update(.01);assert.equal(cancelled.shots.length,0);cancelled.player.reload=2;cancelled.update(.05,{fire:true});assert.equal(cancelled.charge,0);
+const normal=arena();normal.update(.01,{fire:true});assert.equal(normal.shots.length,1);assert(!normal.shots[0].heavy);assert(!new Battle().heavyUnlocked);
+console.log('PASS double-kill unlock, hold/release, 2.5x damage, one-second stun, recovery, tap, cancel, reload gating and round reset');
